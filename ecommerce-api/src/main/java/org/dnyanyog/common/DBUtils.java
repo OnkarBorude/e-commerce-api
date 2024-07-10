@@ -29,8 +29,9 @@ public class DBUtils {
 		return resultSet;
 	}
 	
-	public static void executeQuery(String query) throws SQLException {
-		statement.execute(query);
+	public static int executeQuery(String query) throws SQLException {
+		int rowaffected=statement.executeUpdate(query);
+		return rowaffected;
 	}
 	
 	
