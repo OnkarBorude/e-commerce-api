@@ -20,7 +20,6 @@ public class AddUserService {
 			addUserResponse.errorCode="0000";
 			addUserResponse.messege="Add User Succesfully";
 		return addUserResponse;
-			
 		}
 		else {
 			addUserResponse.errorCode="911";
@@ -29,16 +28,7 @@ public class AddUserService {
 		}
 		
 		
-//		int rowaffected =DBUtils.executeQuery(insertQuery);
-//		if(rowaffected>0) {
-//			addUserResponse.errorCode="0000";
-//			addUserResponse.messege="Add User Succesfully";
-//			return addUserResponse;
-//		}else {
-//			addUserResponse.errorCode="911";
-//			addUserResponse.messege="User Additon Failed";
-//			return addUserResponse;
-//		}
+
 	}
 
 }
