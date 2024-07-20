@@ -11,8 +11,8 @@ public class DBUtils {
 	private static Connection connection;
 	private static Statement statement;
 	static String url = "jdbc:mysql:///ecommerce";
-	 static String username = "root";
-	 static String password = "@onkar9765";
+	static String username = "root";
+	static String password = "@onkar9765";
 	
 	static {
 		try {

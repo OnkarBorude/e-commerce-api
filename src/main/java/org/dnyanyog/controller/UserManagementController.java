@@ -19,5 +19,4 @@ public class UserManagementController {
 	public List<User> getAllUsers() throws SQLException{
 		return userManagementService.getAllUsers();
 		}
-
 }
