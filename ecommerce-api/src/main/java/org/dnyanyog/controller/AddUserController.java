@@ -4,6 +4,8 @@ import java.sql.SQLException;
 
 import org.dnyanyog.dto.AddUserRequest;
 import org.dnyanyog.dto.AddUserResponse;
+import org.dnyanyog.dto.UpdateUserRequest;
+import org.dnyanyog.dto.UpdateUserResponse;
 import org.dnyanyog.service.AddUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +21,12 @@ public class AddUserController {
 	@PostMapping("/addUser")
 	public AddUserResponse addUser(@RequestBody AddUserRequest addUserRequest) throws SQLException {
 		return addUserService.addUser(addUserRequest);
-		}
-
+	}
+	
+	
+	
+	@PostMapping("/updateUser")
+	public UpdateUserResponse updateUser(@RequestBody UpdateUserRequest updateUserRequest) {
+		return addUserService.updateUser(updateUserRequest);
+	}
 }

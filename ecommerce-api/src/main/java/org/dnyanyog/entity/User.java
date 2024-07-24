@@ -2,6 +2,7 @@ package org.dnyanyog.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.Table;
 @Entity
 public class User {
 	
+	@GeneratedValue
 	@Id
 	@Column
 	private Integer user_id;
