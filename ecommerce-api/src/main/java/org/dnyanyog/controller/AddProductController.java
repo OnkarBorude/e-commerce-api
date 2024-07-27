@@ -2,7 +2,9 @@ package org.dnyanyog.controller;
 
 import java.sql.SQLException;
 
-import org.dnyanyog.dto.AddProducResponse;
+import org.dnyanyog.dto.AddProductResponse;
+import org.dnyanyog.dto.UpdateProductRequest;
+import org.dnyanyog.dto.UpdateProductResponse;
 import org.dnyanyog.dto.AddProductRequest;
 import org.dnyanyog.service.AddProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,12 @@ public class AddProductController {
 	AddProductService addProductService;
 	
 	@PostMapping("/addProduct")
-	public AddProducResponse addproduct(@RequestBody AddProductRequest addProductRequest) throws SQLException {
+	public AddProductResponse addproduct(@RequestBody AddProductRequest addProductRequest) throws SQLException {
 		return addProductService.addProduct(addProductRequest);
-		
+	}
+	
+	@PostMapping("/updateProduct")
+	public UpdateProductResponse updateProduct(@RequestBody UpdateProductRequest updateProductRequest) {
+		return addProductService.updateProduct(updateProductRequest);
 	}
 }

@@ -2,12 +2,29 @@ package org.dnyanyog.dto;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 @Component
 public class AddUserRequest {
 	private String first_name;
 	private String last_name;
 	private String login_name;
+	private Integer age;
+	private String email;
 	private String password;
+	
+	public Integer getAge() {
+		return age;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getFirst_name() {
 		return first_name;
 	}

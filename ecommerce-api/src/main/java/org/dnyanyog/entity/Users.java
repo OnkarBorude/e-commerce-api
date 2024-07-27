@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Table
 @Entity
-public class User {
+public class Users {
 	
 	@GeneratedValue
 	@Id
@@ -25,7 +25,31 @@ public class User {
 	private String loginName;
 	
 	@Column
+	private Integer age;
+	
+	@Column
+	private String email;
+	
+	@Column
 	private String password;
+	
+	
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public Integer getUser_id() {
 		return user_id;

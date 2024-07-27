@@ -6,11 +6,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Component
-public class UpdateUserResponse {
-	
+public class AddProductResponse {
 	private String responseCode;
 	private String messege;
-	private UpdateUserRequest updateUserRequest;
+	private AddProductRequest addProductRequest;
 	public String getResponseCode() {
 		return responseCode;
 	}
@@ -23,11 +22,11 @@ public class UpdateUserResponse {
 	public void setMessege(String messege) {
 		this.messege = messege;
 	}
-	public UpdateUserRequest getUpdateUserRequest() {
-		return updateUserRequest;
+	public AddProductRequest getAddProductRequest() {
+		return addProductRequest;
 	}
-	public void setUpdateUserRequest(UpdateUserRequest updateUserRequest) {
-		this.updateUserRequest = updateUserRequest;
+	public void setAddProductRequest(AddProductRequest addProductRequest) {
+		this.addProductRequest = addProductRequest;
 	}
 	
 	

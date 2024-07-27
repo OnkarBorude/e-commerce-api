@@ -1,11 +1,11 @@
 package org.dnyanyog.dao;
 
 
-import org.dnyanyog.entity.User;
+import org.dnyanyog.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface UserDao extends JpaRepository<User, Integer> {
-    public User findByLoginName(String loginName);
+public interface UserDao extends JpaRepository<Users, Integer> {
+    public Users findByLoginName(String loginName);
    
 }

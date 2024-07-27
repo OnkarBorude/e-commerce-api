@@ -6,33 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dnyanyog.common.DBUtils;
+import org.dnyanyog.dao.UserDao;
 import org.dnyanyog.dto.User;
+import org.dnyanyog.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserManagementService {
 	
+	@Autowired
+	UserDao userDao;
 	
-	public List<User> getAllUsers() throws SQLException{
+	public List<Users> getAllUsers() throws SQLException{
 		
-		ArrayList<User> list=new ArrayList<>();
-		
-		String selectQuery="select * from user";
-		ResultSet resultSet=DBUtils.selectQuery(selectQuery);
-		while(resultSet.next()) {
-			User user=new User();
-			user.first_name=resultSet.getString(1);
-			user.last_name=resultSet.getString(2);
-			user.gender=resultSet.getString(3);
-			user.age=resultSet.getInt(4);
-			user.email=resultSet.getString(5);
-			user.password=resultSet.getString(6);
-			
-			list.add(user);
-		}
-		
-		return list;
-		
+		return userDao.findAll();		
+	}
+	
+	public Users getUserById(Integer userId) {
+		return userDao.findById(userId).get();
+	}
+	
+	public void deleteUser(Integer userid) {
+		userDao.deleteById(userid);
 	}
 }

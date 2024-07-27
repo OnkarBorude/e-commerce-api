@@ -2,12 +2,13 @@ package org.dnyanyog.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import org.dnyanyog.common.DBUtils;
 import org.dnyanyog.dao.UserDao;
 import org.dnyanyog.dto.LoginRequest;
 import org.dnyanyog.dto.LoginResponse;
-import org.dnyanyog.entity.User;
+import org.dnyanyog.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,22 +23,27 @@ public class LoginService {
 	
 	public LoginResponse login(LoginRequest loginbody) throws SQLException {
 		//User user=userDao.findById(1).get();
-		  User user=userDao.findByLoginName(loginbody.user);
+		Users user=userDao.findByLoginName(loginbody.getUser());
 		  
-		if(user.getLoginName().equals(loginbody.user) && user.getPassword().equals(loginbody.password)) {
-			loginResponse.errorCode="0000";
-			loginResponse.messege="Login Successful";
-			loginResponse.id=user.getUser_id();
-			loginResponse.firstName=user.getFirstname();
-			loginResponse.lastName=user.getLastname();
-			loginResponse.loginName=user.getLoginName();
-			loginResponse.password=user.getPassword();
-			return loginResponse;
-		}else {
-			loginResponse.errorCode="911";
-			loginResponse.messege="login failed";
+		if(user.getLoginName().equals(loginbody.getUser()) && user.getPassword().equals(loginbody.getPassword())) {
+			loginResponse.setResponseCode("0000");
+			loginResponse.setMessege("Login Successful");
+			loginResponse.setId(user.getUser_id());
+			loginResponse.setFirstName(user.getFirstname());
+			loginResponse.setLastName(user.getLastname());
+			loginResponse.setLoginName(user.getLoginName());
+			loginResponse.setAge(user.getAge());
+			loginResponse.setEmail(user.getEmail());
+			loginResponse.setPassword(user.getPassword());
 			return loginResponse;
 		}
+		else {
+			loginResponse.setResponseCode("911");
+			loginResponse.setMessege("User Not Found");
+			return loginResponse;
+		}
+		  
+		
 		
 	}
 

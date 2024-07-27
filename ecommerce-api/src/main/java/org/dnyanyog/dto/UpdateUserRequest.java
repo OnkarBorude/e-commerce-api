@@ -10,7 +10,21 @@ public class UpdateUserRequest {
 	private String login_name;
 	private String password;
 	private Integer user_id;
+	private Integer age;
+	private String email;
 	
+	public Integer getAge() {
+		return age;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public Integer getUser_id() {
 		return user_id;
 	}

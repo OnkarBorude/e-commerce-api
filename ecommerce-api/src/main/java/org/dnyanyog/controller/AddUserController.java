@@ -24,7 +24,6 @@ public class AddUserController {
 	}
 	
 	
-	
 	@PostMapping("/updateUser")
 	public UpdateUserResponse updateUser(@RequestBody UpdateUserRequest updateUserRequest) {
 		return addUserService.updateUser(updateUserRequest);

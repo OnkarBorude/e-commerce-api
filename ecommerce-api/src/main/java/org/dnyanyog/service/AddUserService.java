@@ -2,6 +2,7 @@ package org.dnyanyog.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import org.dnyanyog.common.DBUtils;
 import org.dnyanyog.dao.UserDao;
@@ -9,7 +10,7 @@ import org.dnyanyog.dto.AddUserRequest;
 import org.dnyanyog.dto.AddUserResponse;
 import org.dnyanyog.dto.UpdateUserRequest;
 import org.dnyanyog.dto.UpdateUserResponse;
-import org.dnyanyog.entity.User;
+import org.dnyanyog.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,13 +24,15 @@ public class AddUserService {
 		
 		AddUserResponse addUserResponse=new AddUserResponse();	
 		
-		User userTable=new User();
+		Users userTable=new Users();
 		userTable.setFirstname(addUserRequest.getFirst_name());
 		userTable.setLastname(addUserRequest.getLast_name());
 		userTable.setLoginName(addUserRequest.getLogin_name());
 		userTable.setPassword(addUserRequest.getPassword());
+		userTable.setAge(addUserRequest.getAge());
+		userTable.setEmail(addUserRequest.getEmail());
 		
-		User dataValueGeneratedByDao=userDao.save(userTable);
+		Users dataValueGeneratedByDao=userDao.save(userTable);
 		
 		addUserResponse.setResponseCode("0000");
 		addUserResponse.setMessege("User Added Successsully");
@@ -48,19 +51,32 @@ public class AddUserService {
 			return updateUserResponse;
 		}
 		
-		User userTable=new User();
-		userTable.setFirstname(updateUserRequest.getFirst_name());
-		userTable.setLastname(updateUserRequest.getLast_name());
-		userTable.setLoginName(updateUserRequest.getLogin_name());
-		userTable.setPassword(updateUserRequest.getPassword());
-		userTable.setUser_id(updateUserRequest.getUser_id());
+		Optional<Users> users= userDao.findById(updateUserRequest.getUser_id());
 		
-		userDao.save(userTable);
-		updateUserResponse.setResponseCode("0000");
-		updateUserResponse.setMessege("Update User Sucessfully");
-		updateUserResponse.setUpdateUserRequest(updateUserRequest);
+		if(users.isPresent()) {
+			Users userTable=new Users();
+			
+			userTable.setFirstname(updateUserRequest.getFirst_name());
+			userTable.setLastname(updateUserRequest.getLast_name());
+			userTable.setLoginName(updateUserRequest.getLogin_name());
+			userTable.setPassword(updateUserRequest.getPassword());
+			userTable.setUser_id(updateUserRequest.getUser_id());
+			userTable.setAge(updateUserRequest.getAge());
+			userTable.setEmail(updateUserRequest.getEmail());
+			
+			userDao.save(userTable);
+			updateUserResponse.setResponseCode("0000");
+			updateUserResponse.setMessege("Update User Sucessfully");
+			updateUserResponse.setUpdateUserRequest(updateUserRequest);
+			
+			return updateUserResponse;
+		}
+		else {
+			updateUserResponse.setResponseCode("911");
+			updateUserResponse.setMessege("User Id not found");
+			return updateUserResponse;
+		}
 		
-		return updateUserResponse;
 	}
 	
 	
