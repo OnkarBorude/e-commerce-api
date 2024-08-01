@@ -22,8 +22,8 @@ public class LoginService {
 	UserDao userDao;
 	
 	public LoginResponse login(LoginRequest loginbody) throws SQLException {
-		//User user=userDao.findById(1).get();
-		Users user=userDao.findByLoginName(loginbody.getUser());
+		Users user=userDao.findById(1).get();
+		//Users user=userDao.findByLoginName(loginbody.getUser());
 		  
 		if(user.getLoginName().equals(loginbody.getUser()) && user.getPassword().equals(loginbody.getPassword())) {
 			loginResponse.setResponseCode("0000");
@@ -39,7 +39,7 @@ public class LoginService {
 		}
 		else {
 			loginResponse.setResponseCode("911");
-			loginResponse.setMessege("User Not Found");
+			loginResponse.setMessege("Invalid User");
 			return loginResponse;
 		}
 		  
