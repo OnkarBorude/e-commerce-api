@@ -28,9 +28,11 @@ public class AddUserService {
 		userTable.setFirstname(addUserRequest.getFirst_name());
 		userTable.setLastname(addUserRequest.getLast_name());
 		userTable.setLoginName(addUserRequest.getLogin_name());
-		userTable.setPassword(addUserRequest.getPassword());
+		userTable.setGender(addUserRequest.getGender());
 		userTable.setAge(addUserRequest.getAge());
 		userTable.setEmail(addUserRequest.getEmail());
+		userTable.setPassword(addUserRequest.getPassword());
+
 		
 		Users dataValueGeneratedByDao=userDao.save(userTable);
 		

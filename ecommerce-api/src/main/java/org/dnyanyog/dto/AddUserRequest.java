@@ -9,10 +9,19 @@ public class AddUserRequest {
 	private String first_name;
 	private String last_name;
 	private String login_name;
+	private String gender;
 	private Integer age;
 	private String email;
 	private String password;
 	
+	
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public Integer getAge() {
 		return age;
 	}

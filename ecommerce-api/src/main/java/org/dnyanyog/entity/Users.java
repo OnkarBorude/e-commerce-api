@@ -25,6 +25,9 @@ public class Users {
 	private String loginName;
 	
 	@Column
+	private String gender;
+	
+	@Column
 	private Integer age;
 	
 	@Column
@@ -34,6 +37,14 @@ public class Users {
 	private String password;
 	
 	
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 	public Integer getAge() {
 		return age;
